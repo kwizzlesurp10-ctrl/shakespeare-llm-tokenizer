@@ -16,7 +16,7 @@ DEFAULT_SENTENCE_LIMIT = 10_000
 DEFAULT_MIN_CHARS = 10
 DEFAULT_VOCAB_SIZE = 8_000
 REQUEST_TIMEOUT_SECONDS = 30
-SENTENCE_SPLIT_PATTERN = re.compile(r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=[.?!)\n])\s+")
+SENTENCE_SPLIT_PATTERN = re.compile(r"\n+|(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=[.?!)])\s+")
 SPECIAL_TOKENS = ["[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]"]
 
 
