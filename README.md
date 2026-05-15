@@ -9,6 +9,7 @@ Tiny Shakespeare (~10k sentences)
 - Hugging Face `tokenizers` (BPE / WordPiece / Unigram)
 - SentencePiece (Unigram & BPE)
 - Full import-safe training CLI
+- PyTorch next-token language model training
 - Reproducible pipeline
 
 ## Quick Start
@@ -32,6 +33,31 @@ Generated artifacts:
 - `huggingface_unigram_tokenizer.json`
 - `sentencepiece_unigram.model`
 - `sentencepiece_bpe.model`
+
+## Train a Language Model
+
+After training tokenizers, train a compact GRU causal language model on the
+tokenized Tiny Shakespeare corpus:
+
+```bash
+python3 train_lm.py \
+  --corpus-path tiny_shakespeare_10k.txt \
+  --tokenizer-path tokenizer_artifacts/huggingface_bpe_tokenizer.json \
+  --epochs 3 \
+  --batch-size 32
+```
+
+The default checkpoint is written to:
+
+```text
+model_artifacts/tiny_shakespeare_gru.pt
+```
+
+For a quick CPU smoke run:
+
+```bash
+python3 train_lm.py --epochs 1 --max-examples 128 --embedding-dim 32 --hidden-dim 64
+```
 
 ## Tests
 

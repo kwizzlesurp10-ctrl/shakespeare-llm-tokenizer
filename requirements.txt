@@ -1,3 +1,4 @@
 tokenizers>=0.20.0
 sentencepiece
 requests
+torch

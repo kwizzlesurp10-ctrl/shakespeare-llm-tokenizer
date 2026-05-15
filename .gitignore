@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+tiny_shakespeare_10k.txt
+tokenizer_artifacts/
+model_artifacts/
