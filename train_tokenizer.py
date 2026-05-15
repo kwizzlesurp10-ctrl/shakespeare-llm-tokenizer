@@ -70,6 +70,7 @@ def _set_template_processing(tokenizer: Tokenizer) -> None:
 
 
 def train_huggingface_bpe(corpus_path: Path, output_dir: Path, vocab_size: int = DEFAULT_VOCAB_SIZE) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
     tokenizer = Tokenizer(models.BPE(unk_token="[UNK]"))
     tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
     tokenizer.decoder = decoders.BPEDecoder()
@@ -84,6 +85,7 @@ def train_huggingface_bpe(corpus_path: Path, output_dir: Path, vocab_size: int =
 
 
 def train_huggingface_wordpiece(corpus_path: Path, output_dir: Path, vocab_size: int = DEFAULT_VOCAB_SIZE) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
     tokenizer = Tokenizer(models.WordPiece(unk_token="[UNK]"))
     tokenizer.pre_tokenizer = pre_tokenizers.BertPreTokenizer()
     tokenizer.decoder = decoders.WordPiece(prefix="##")
@@ -98,6 +100,7 @@ def train_huggingface_wordpiece(corpus_path: Path, output_dir: Path, vocab_size:
 
 
 def train_huggingface_unigram(corpus_path: Path, output_dir: Path, vocab_size: int = DEFAULT_VOCAB_SIZE) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
     tokenizer = Tokenizer(models.Unigram())
     tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
     trainer = trainers.UnigramTrainer(vocab_size=vocab_size, special_tokens=SPECIAL_TOKENS, unk_token="[UNK]")
@@ -116,6 +119,7 @@ def train_sentencepiece(
     model_type: str,
     vocab_size: int = DEFAULT_VOCAB_SIZE,
 ) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
     model_prefix = output_dir / f"sentencepiece_{model_type}"
     spm.SentencePieceTrainer.train(
         input=str(corpus_path),
