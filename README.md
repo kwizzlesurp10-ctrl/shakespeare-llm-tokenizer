@@ -1,6 +1,24 @@
+---
+title: Shakespeare LLM Tokenizer
+emoji: 📜
+colorFrom: indigo
+colorTo: purple
+sdk: gradio
+sdk_version: "5.50.0"
+python_version: "3.11"
+app_file: app.py
+pinned: false
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+
 # Shakespeare LLM Tokenizer
 
 Production-ready end-to-end example for training BPE, WordPiece, Unigram, and SentencePiece tokenizers from scratch.
+
+## Hugging Face Space
+
+This repository includes a small Gradio demo in `app.py` and a committed demo tokenizer under `demo_tokenizer/` so a Space can load without running the full training pipeline. For full artifacts and LM training, use the CLI below.
 
 ## Dataset
 Tiny Shakespeare (~10k sentences)
